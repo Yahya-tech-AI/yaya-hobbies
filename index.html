@@ -10,9 +10,10 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
     <style>
-        /* =========================
-           Base
-        ========================= */
+
+        /* =====================================================
+           BASE
+        ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -24,15 +25,20 @@
 
         body {
             background-color: mediumslateblue;
+
             min-height: 100vh;
+
             margin: 0;
+
             padding: 40px;
+
             overflow-x: hidden;
         }
 
-        /* =========================
-           Custom Scrollbar
-        ========================= */
+
+        /* =====================================================
+           CUSTOM SCROLLBAR
+        ===================================================== */
 
         ::-webkit-scrollbar {
             width: 10px;
@@ -52,6 +58,7 @@
             );
 
             border-radius: 20px;
+
             border: 2px solid mediumslateblue;
         }
 
@@ -65,92 +72,291 @@
             );
         }
 
-        /* =========================
-           Splash Screen
-        ========================= */
+
+        /* =====================================================
+           SPLASH SCREEN
+        ===================================================== */
 
         #splash {
             position: fixed;
+
             inset: 0;
 
             background-color: mediumslateblue;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             z-index: 9999;
 
-            animation: splashFade 1s ease 2s forwards;
+            animation:
+                splashFade 1s ease 3s forwards;
         }
 
-        #splash img {
-            width: 180px;
-            height: 180px;
 
-            animation: logoPop 1s ease;
+        /* =====================================================
+           ORBIT SYSTEM
+        ===================================================== */
+
+        .orbit-system {
+            position: relative;
+
+            width: 280px;
+
+            height: 280px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
         }
+
+
+        /* =====================================================
+           SPLASH LOGO
+        ===================================================== */
+
+        .splash-logo {
+            position: relative;
+
+            z-index: 5;
+
+            width: 150px;
+
+            height: 150px;
+
+            animation:
+                logoPop 1s ease;
+        }
+
+
+        /* =====================================================
+           ORBIT RINGS
+        ===================================================== */
+
+        .orbit {
+            position: absolute;
+
+            width: 230px;
+
+            height: 230px;
+
+            top: 25px;
+
+            left: 25px;
+
+            border-radius: 50%;
+
+            border:
+                2px solid
+                rgba(255, 255, 255, 0.15);
+        }
+
+
+        /* =====================================================
+           FIRST ORBIT
+        ===================================================== */
+
+        .orbit-one {
+            animation:
+                orbitSpin 3s linear infinite;
+        }
+
+
+        /* =====================================================
+           SECOND ORBIT
+        ===================================================== */
+
+        .orbit-two {
+            animation:
+                orbitSpinReverse 4s linear infinite;
+        }
+
+
+        /* =====================================================
+           ORBITING CIRCLES
+        ===================================================== */
+
+        .orbit-circle {
+            position: absolute;
+
+            width: 18px;
+
+            height: 18px;
+
+            top: -9px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background-color: white;
+
+            box-shadow:
+                0 0 10px white,
+                0 0 25px #0066ff,
+                0 0 45px #8a2be2;
+        }
+
+
+        /* =====================================================
+           SECOND CIRCLE
+        ===================================================== */
+
+        .orbit-two .orbit-circle {
+            width: 15px;
+
+            height: 15px;
+
+            top: auto;
+
+            bottom: -7px;
+
+            box-shadow:
+                0 0 10px white,
+                0 0 25px #20d64a,
+                0 0 45px #ffd500;
+        }
+
+
+        /* =====================================================
+           SPLASH LOGO ANIMATION
+        ===================================================== */
 
         @keyframes logoPop {
+
             0% {
-                transform: scale(0.5);
+                transform:
+                    scale(0.4);
+
                 opacity: 0;
             }
 
-            100% {
-                transform: scale(1);
+            70% {
+                transform:
+                    scale(1.08);
+
                 opacity: 1;
             }
+
+            100% {
+                transform:
+                    scale(1);
+
+                opacity: 1;
+            }
+
         }
 
+
+        /* =====================================================
+           ORBIT ANIMATION
+        ===================================================== */
+
+        @keyframes orbitSpin {
+
+            from {
+                transform:
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes orbitSpinReverse {
+
+            from {
+                transform:
+                    rotate(360deg);
+            }
+
+            to {
+                transform:
+                    rotate(0deg);
+            }
+
+        }
+
+
+        /* =====================================================
+           SPLASH FADE
+        ===================================================== */
+
         @keyframes splashFade {
+
             0% {
                 opacity: 1;
+
                 visibility: visible;
             }
 
             100% {
                 opacity: 0;
+
                 visibility: hidden;
+
                 pointer-events: none;
             }
+
         }
 
-        /* =========================
-           Scroll Reveal
-        ========================= */
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
 
         .reveal {
             opacity: 0;
-            transform: translateY(70px);
+
+            transform:
+                translateY(70px);
 
             transition:
                 opacity 0.8s ease,
                 transform 0.8s ease;
         }
 
+
         .reveal.show {
             opacity: 1;
-            transform: translateY(0);
+
+            transform:
+                translateY(0);
         }
 
-        /* =========================
-           Sections
-        ========================= */
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
 
         section {
             min-height: 70vh;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
 
             margin-bottom: 120px;
         }
 
-        /* =========================
-           Content Cards
-        ========================= */
+
+        /* =====================================================
+           CONTENT CARDS
+        ===================================================== */
 
         .card {
             color: white;
@@ -166,23 +372,28 @@
             border-radius: 25px;
 
             box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.15);
+                0 10px 30px
+                rgba(0, 0, 0, 0.15);
 
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
         }
 
+
         .card:hover {
-            transform: translateY(-5px);
+            transform:
+                translateY(-5px);
 
             box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.25);
+                0 15px 35px
+                rgba(0, 0, 0, 0.25);
         }
 
-        /* =========================
-           Main Heading
-        ========================= */
+
+        /* =====================================================
+           MAIN TITLE
+        ===================================================== */
 
         .main-title {
             padding: 25px;
@@ -192,9 +403,10 @@
             text-align: center;
         }
 
-        /* =========================
-           Hobby Heading
-        ========================= */
+
+        /* =====================================================
+           HOBBY TITLE
+        ===================================================== */
 
         .hobby-title {
             padding: 20px;
@@ -204,9 +416,10 @@
             text-align: center;
         }
 
-        /* =========================
-           Paragraphs
-        ========================= */
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
 
         .intro {
             padding: 25px;
@@ -215,6 +428,11 @@
 
             text-align: center;
         }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
 
         .description {
             padding: 30px;
@@ -226,33 +444,40 @@
             text-align: center;
         }
 
-        /* =========================
-           Hobby List
-        ========================= */
+
+        /* =====================================================
+           HOBBY LIST
+        ===================================================== */
 
         .hobby-list {
-            padding: 35px 55px;
+            padding:
+                35px 55px;
 
             font-size: 25px;
 
             line-height: 2;
         }
 
+
         .hobby-list li {
             margin-bottom: 10px;
         }
 
-        /* =========================
-           Logo
-        ========================= */
+
+        /* =====================================================
+           LOGO SECTION
+        ===================================================== */
 
         .logo-container {
             align-items: center;
+
             text-align: center;
         }
 
+
         .main-logo {
             width: 200px;
+
             height: 200px;
 
             display: block;
@@ -264,17 +489,25 @@
                 filter 0.5s ease;
         }
 
+
         .main-logo:hover {
-            transform: scale(1.08) rotate(3deg);
+            transform:
+                scale(1.08)
+                rotate(3deg);
 
             filter:
-                drop-shadow(0 0 10px #0066ff)
-                drop-shadow(0 0 20px #8a2be2);
+                drop-shadow(
+                    0 0 10px #0066ff
+                )
+                drop-shadow(
+                    0 0 20px #8a2be2
+                );
         }
 
-        /* =========================
-           Footer
-        ========================= */
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
             color: white;
@@ -294,11 +527,14 @@
             padding: 35px;
 
             margin-top: 100px;
+
             margin-bottom: 40px;
 
             box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.2);
+                0 10px 30px
+                rgba(0, 0, 0, 0.2);
         }
+
 
         footer h2 {
             margin-top: 0;
@@ -306,25 +542,29 @@
             font-size: 30px;
         }
 
+
         footer p {
             font-size: 20px;
 
             line-height: 1.6;
         }
 
-        /* =========================
-           Cursor Glow
-        ========================= */
+
+        /* =====================================================
+           CURSOR GLOW
+        ===================================================== */
 
         #cursorGlow {
             position: fixed;
 
             width: 25px;
+
             height: 25px;
 
             border-radius: 50%;
 
-            background: rgba(255, 255, 255, 0.45);
+            background:
+                rgba(255, 255, 255, 0.45);
 
             box-shadow:
                 0 0 10px white,
@@ -333,7 +573,8 @@
 
             pointer-events: none;
 
-            transform: translate(-50%, -50%);
+            transform:
+                translate(-50%, -50%);
 
             z-index: 10000;
 
@@ -345,33 +586,43 @@
                 height 0.15s ease;
         }
 
-        /* =========================
-           Click Ripple
-        ========================= */
+
+        /* =====================================================
+           CLICK RIPPLE
+        ===================================================== */
 
         .click-effect {
             position: fixed;
 
             width: 20px;
+
             height: 20px;
 
-            border: 3px solid white;
+            border:
+                3px solid white;
 
             border-radius: 50%;
 
             pointer-events: none;
 
-            transform: translate(-50%, -50%);
+            transform:
+                translate(-50%, -50%);
 
             z-index: 9998;
 
             animation:
-                clickRipple 0.7s ease-out forwards;
+                clickRipple
+                0.7s
+                ease-out
+                forwards;
         }
 
+
         @keyframes clickRipple {
+
             0% {
                 width: 20px;
+
                 height: 20px;
 
                 opacity: 1;
@@ -383,6 +634,7 @@
 
             100% {
                 width: 120px;
+
                 height: 120px;
 
                 opacity: 0;
@@ -391,11 +643,13 @@
                     0 0 30px #20d64a,
                     0 0 60px #ffd500;
             }
+
         }
 
-        /* =========================
-           Mobile
-        ========================= */
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 700px) {
 
@@ -403,53 +657,90 @@
                 padding: 20px;
             }
 
+
             section {
                 min-height: 60vh;
 
                 margin-bottom: 80px;
             }
 
+
+            .orbit-system {
+                width: 230px;
+
+                height: 230px;
+            }
+
+
+            .orbit {
+                width: 190px;
+
+                height: 190px;
+
+                top: 20px;
+
+                left: 20px;
+            }
+
+
+            .splash-logo {
+                width: 125px;
+
+                height: 125px;
+            }
+
+
             .main-title {
                 font-size: 28px;
             }
 
+
             .hobby-title {
                 font-size: 25px;
             }
+
 
             .intro,
             .description {
                 font-size: 20px;
             }
 
+
             .hobby-list {
-                padding: 25px 35px;
+                padding:
+                    25px 35px;
 
                 font-size: 20px;
             }
 
+
             .main-logo {
                 width: 160px;
+
                 height: 160px;
             }
+
 
             footer {
                 padding: 25px;
             }
 
+
             footer h2 {
                 font-size: 25px;
             }
 
+
             footer p {
                 font-size: 17px;
             }
+
         }
 
-        /* =========================
-           Disable Cursor Effects
-           On Touch Devices
-        ========================= */
+
+        /* =====================================================
+           TOUCH DEVICES
+        ===================================================== */
 
         @media (hover: none) and (pointer: coarse) {
 
@@ -457,126 +748,160 @@
                 display: none;
             }
 
+
             .click-effect {
                 display: none;
             }
+
         }
+
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- =========================
-         Cursor Glow
-    ========================= -->
+
+    <!-- =====================================================
+         CURSOR GLOW
+    ===================================================== -->
 
     <div id="cursorGlow"></div>
 
 
-    <!-- =========================
-         Splash Screen
-    ========================= -->
+    <!-- =====================================================
+         SPLASH SCREEN
+    ===================================================== -->
 
     <div id="splash">
 
-        <img
-            src="yaya-logo.svg"
-            alt="Yaya Logo"
-        >
+        <div class="orbit-system">
+
+            <div class="orbit orbit-one">
+
+                <div class="orbit-circle"></div>
+
+            </div>
+
+
+            <div class="orbit orbit-two">
+
+                <div class="orbit-circle"></div>
+
+            </div>
+
+
+            <img
+                src="yaya-logo.svg"
+                alt="Yaya Logo"
+                class="splash-logo"
+            >
+
+        </div>
 
     </div>
 
 
-    <!-- =========================
-         Main Title
-    ========================= -->
+    <!-- =====================================================
+         MAIN TITLE
+    ===================================================== -->
 
     <section>
 
-        <h1
-            class="reveal card main-title"
-        >
+        <h1 class="reveal card main-title">
+
             This is my website that I built myself
+
         </h1>
 
     </section>
 
 
-    <!-- =========================
-         Hobbies
-    ========================= -->
+    <!-- =====================================================
+         HOBBIES
+    ===================================================== -->
 
     <section>
 
-        <h2
-            class="reveal card hobby-title"
-        >
+        <h2 class="reveal card hobby-title">
+
             🎯 My Hobbies
+
         </h2>
 
     </section>
 
 
-    <!-- =========================
-         Introduction
-    ========================= -->
+    <!-- =====================================================
+         INTRODUCTION
+    ===================================================== -->
 
     <section>
 
-        <p
-            class="reveal card intro"
-        >
+        <p class="reveal card intro">
+
             My main hobbies are:
+
         </p>
 
     </section>
 
 
-    <!-- =========================
-         Hobby List
-    ========================= -->
+    <!-- =====================================================
+         HOBBY LIST
+    ===================================================== -->
 
     <section>
 
-        <ul
-            class="reveal card hobby-list"
-        >
-            <li>💻 Coding</li>
+        <ul class="reveal card hobby-list">
 
-            <li>⚽ Playing Football</li>
+            <li>
+                💻 Coding
+            </li>
 
-            <li>🎮 Gaming</li>
+            <li>
+                ⚽ Playing Football
+            </li>
 
-            <li>🌐 Building Websites</li>
+            <li>
+                🎮 Gaming
+            </li>
 
-            <li>🚀 Learning Technology</li>
+            <li>
+                🌐 Building Websites
+            </li>
+
+            <li>
+                🚀 Learning Technology
+            </li>
+
         </ul>
 
     </section>
 
 
-    <!-- =========================
-         Description
-    ========================= -->
+    <!-- =====================================================
+         DESCRIPTION
+    ===================================================== -->
 
     <section>
 
-        <p
-            class="reveal card description"
-        >
+        <p class="reveal card description">
+
             I enjoy coding because I can create websites,
             applications, and different projects.
             I also enjoy playing football because it is fun,
             active, and competitive.
+
         </p>
 
     </section>
 
 
-    <!-- =========================
-         Logo
-    ========================= -->
+    <!-- =====================================================
+         LOGO
+    ===================================================== -->
 
     <section class="logo-container">
 
@@ -589,9 +914,9 @@
     </section>
 
 
-    <!-- =========================
-         Footer
-    ========================= -->
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
 
     <footer class="reveal">
 
@@ -599,13 +924,16 @@
             🚀 Yaya Hobbies
         </h2>
 
+
         <p>
             Thanks for visiting my website!
         </p>
 
+
         <p>
             Built with HTML &amp; CSS by Yaya 💻
         </p>
+
 
         <p>
             © 2026 Yaya Hobbies. All rights reserved.
@@ -614,58 +942,75 @@
     </footer>
 
 
-    <!-- =========================
-         JavaScript
-    ========================= -->
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
 
     <script>
 
-        /* =========================
-           Scroll Reveal
-        ========================= */
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
 
         const elements =
             document.querySelectorAll(".reveal");
 
+
         const observer =
             new IntersectionObserver(
+
                 (entries) => {
 
-                    entries.forEach((entry) => {
+                    entries.forEach(
+                        (entry) => {
 
-                        if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            entry.target.classList.add("show");
+                                entry.target
+                                    .classList
+                                    .add("show");
+
+                            }
 
                         }
-
-                    });
+                    );
 
                 },
+
                 {
                     threshold: 0.15
                 }
+
             );
 
 
-        elements.forEach((element) => {
+        elements.forEach(
+            (element) => {
 
-            observer.observe(element);
+                observer.observe(element);
 
-        });
+            }
+        );
 
 
-        /* =========================
-           Cursor Glow
-        ========================= */
+        /* =====================================================
+           CURSOR GLOW
+        ===================================================== */
 
         const cursorGlow =
-            document.getElementById("cursorGlow");
+            document.getElementById(
+                "cursorGlow"
+            );
+
 
         let mouseX = 0;
+
         let mouseY = 0;
 
         let glowX = 0;
+
         let glowY = 0;
 
 
@@ -673,10 +1018,14 @@
             "mousemove",
             (event) => {
 
-                mouseX = event.clientX;
-                mouseY = event.clientY;
+                mouseX =
+                    event.clientX;
 
-                cursorGlow.style.opacity = "1";
+                mouseY =
+                    event.clientY;
+
+                cursorGlow.style.opacity =
+                    "1";
 
             }
         );
@@ -694,6 +1043,7 @@
             cursorGlow.style.left =
                 glowX + "px";
 
+
             cursorGlow.style.top =
                 glowY + "px";
 
@@ -708,15 +1058,16 @@
         animateCursor();
 
 
-        /* =========================
-           Hide Cursor Outside Page
-        ========================= */
+        /* =====================================================
+           HIDE CURSOR WHEN LEAVING PAGE
+        ===================================================== */
 
         document.addEventListener(
             "mouseleave",
             () => {
 
-                cursorGlow.style.opacity = "0";
+                cursorGlow.style.opacity =
+                    "0";
 
             }
         );
@@ -726,22 +1077,25 @@
             "mouseenter",
             () => {
 
-                cursorGlow.style.opacity = "1";
+                cursorGlow.style.opacity =
+                    "1";
 
             }
         );
 
 
-        /* =========================
-           Click Ripple
-        ========================= */
+        /* =====================================================
+           CLICK RIPPLE
+        ===================================================== */
 
         document.addEventListener(
             "click",
             (event) => {
 
                 const ripple =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
 
                 ripple.classList.add(
@@ -751,6 +1105,7 @@
 
                 ripple.style.left =
                     event.clientX + "px";
+
 
                 ripple.style.top =
                     event.clientY + "px";
@@ -774,6 +1129,7 @@
         );
 
     </script>
+
 
 </body>
 
