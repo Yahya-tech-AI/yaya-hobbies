@@ -8,6 +8,13 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
     <style>
+        body {
+            background-color: mediumslateblue;
+            min-height: 100vh;
+            padding: 40px;
+            margin: 0;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
@@ -79,64 +86,129 @@
         /* Scroll Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(70px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
         }
 
         .reveal.show {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Spacing */
+        section {
+            margin-bottom: 300px;
+        }
     </style>
 </head>
 
-<body style="background-color: mediumslateblue;">
+<body>
 
     <!-- Splash Screen -->
     <div id="splash">
         <img src="yaya-logo.svg" alt="Yaya Logo">
     </div>
 
-    <h1
-        class="reveal"
-        style="color: white; background-color: sandybrown; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; border-radius: 25px; font-size: 35.92px; padding: 20px;">
-        This is my website that I built myself
-    </h1>
+    <!-- Main Title -->
+    <section>
+        <h1
+            class="reveal"
+            style="
+                color: white;
+                background-color: sandybrown;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border-radius: 25px;
+                font-size: 35.92px;
+                padding: 20px;
+            ">
+            This is my website that I built myself
+        </h1>
+    </section>
 
-    <h2
-        class="reveal"
-        style="color: white; background-color: sandybrown; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; border-radius: 20px; font-size: 30px; padding: 15px;">
-        🎯 My Hobbies
-    </h2>
+    <!-- Hobbies -->
+    <section>
+        <h2
+            class="reveal"
+            style="
+                color: white;
+                background-color: sandybrown;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border-radius: 20px;
+                font-size: 30px;
+                padding: 15px;
+            ">
+            🎯 My Hobbies
+        </h2>
+    </section>
 
-    <p
-        class="reveal"
-        style="color: white; background-color: sandybrown; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; border-radius: 20px; font-size: 25px; padding: 20px;">
-        My main hobbies are:
-    </p>
+    <!-- Introduction -->
+    <section>
+        <p
+            class="reveal"
+            style="
+                color: white;
+                background-color: sandybrown;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border-radius: 20px;
+                font-size: 25px;
+                padding: 20px;
+            ">
+            My main hobbies are:
+        </p>
+    </section>
 
-    <ul
-        class="reveal"
-        style="color: white; background-color: sandybrown; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; border-radius: 20px; font-size: 25px; padding: 30px 50px;">
-        <li>💻 Coding</li>
-        <li>⚽ Playing Football</li>
-        <li>🎮 Gaming</li>
-        <li>🌐 Building Websites</li>
-        <li>🚀 Learning Technology</li>
-    </ul>
+    <!-- Hobby List -->
+    <section>
+        <ul
+            class="reveal"
+            style="
+                color: white;
+                background-color: sandybrown;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border-radius: 20px;
+                font-size: 25px;
+                padding: 30px 50px;
+            ">
+            <li>💻 Coding</li>
+            <li>⚽ Playing Football</li>
+            <li>🎮 Gaming</li>
+            <li>🌐 Building Websites</li>
+            <li>🚀 Learning Technology</li>
+        </ul>
+    </section>
 
-    <p
-        class="reveal"
-        style="color: white; background-color: sandybrown; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; border-radius: 20px; font-size: 25px; padding: 20px;">
-        I enjoy coding because I can create websites, applications, and different projects.
-        I also enjoy playing football because it is fun, active, and competitive.
-    </p>
+    <!-- Description -->
+    <section>
+        <p
+            class="reveal"
+            style="
+                color: white;
+                background-color: sandybrown;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border-radius: 20px;
+                font-size: 25px;
+                padding: 20px;
+            ">
+            I enjoy coding because I can create websites, applications, and different projects.
+            I also enjoy playing football because it is fun, active, and competitive.
+        </p>
+    </section>
 
-    <img
-        class="reveal"
-        src="yaya-logo.svg"
-        alt="The logo I made"
-        style="width: 180px; height: 180px; display: block; margin: 30px auto;">
+    <!-- Logo -->
+    <section>
+        <img
+            class="reveal"
+            src="yaya-logo.svg"
+            alt="The logo I made"
+            style="
+                width: 180px;
+                height: 180px;
+                display: block;
+                margin: 30px auto;
+            ">
+    </section>
 
     <script>
         const elements = document.querySelectorAll(".reveal");
