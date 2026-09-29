@@ -2,22 +2,25 @@
 
 Welcome to my **Yaya Hobbies** website!
 
-This is my ICT homework project, created using **HTML and CSS**. The website introduces some of my hobbies and includes a custom design and logo.
+This is my ICT homework project, created using **HTML, CSS, and JavaScript**. The website introduces some of my hobbies while demonstrating different web development features, animations, and custom design elements.
 
 ## 🌐 About the Website
 
-The webpage contains:
+The website contains:
 
-* A custom webpage title
-* A main heading
-* A paragraph about my hobbies
-* Colorful backgrounds
-* Custom text colors
-* Rounded corners
-* Custom fonts
-* A custom SVG favicon
-* A custom Yaya logo
-* Responsive viewport settings
+* 🚀 Animated splash screen
+* 🎯 Main heading and hobby sections
+* 💻 Information about my hobbies
+* 🎨 Custom colors and styling
+* ✨ Scroll reveal animations
+* 🖱️ Glowing custom cursor
+* 💥 Click ripple effects
+* 🌈 Custom gradient scrollbar
+* 🖼️ Custom Yaya SVG logo
+* 🔖 Custom SVG favicon
+* 📱 Responsive design
+* 🦶 Custom animated footer
+* ✨ Hover effects
 
 ## 🎯 My Hobbies
 
@@ -38,60 +41,22 @@ I also enjoy playing football because it is fun, active, and competitive.
 This project uses:
 
 * **HTML5** — for the structure of the webpage
-* **CSS** — for styling the webpage
+* **CSS3** — for styling, animations, layouts, and effects
+* **JavaScript** — for interactive features and scroll animations
 * **SVG** — for the custom logo and favicon
-* **VS Code** — for writing the code
+* **VS Code** — for writing and editing the code
+* **GitHub** — for storing the project
+* **Vercel** — for deploying the website
 
 ## 🎨 Design
 
 The webpage uses a **Medium Slate Blue** background with **Sandy Brown** content sections.
 
-The heading and paragraph use white text to make them easy to read.
+The main content uses white text for readability.
 
-The content boxes have rounded corners using:
+The website also uses rounded corners, shadows, animations, and transitions to create a more interactive design.
 
-`border-radius: 25px`
+The content boxes use properties such as:
 
-The text also uses the **Franklin Gothic Medium** font family.
-
-## 🖼️ Custom Logo
-
-I created a custom Yaya logo and added it to the webpage.
-
-The logo is displayed using an image element:
-
-`<img src="yaya-logo.svg">`
-
-The website also uses a custom SVG favicon that appears in the browser tab.
-
-## 📱 Responsive Design
-
-The webpage includes a viewport meta tag so that the page can display correctly on different screen sizes.
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
-
-## 📚 What I Learned
-
-While creating this project, I practiced:
-
-* Creating an HTML document
-* Using `<!DOCTYPE html>`
-* Creating the `<html>` structure
-* Adding a `<head>` section
-* Adding a webpage `<title>`
-* Creating an `<h1>` heading
-* Creating a `<p>` paragraph
-* Using inline CSS
-* Changing text colors
-* Changing background colors
-* Using custom fonts
-* Using rounded corners
-* Adding images
-* Adding an SVG favicon
-* Organizing a small web project
-
-## 🚀 Project Files
-├── my_website.h_
-```
+```css
+border-radius: 25px;
