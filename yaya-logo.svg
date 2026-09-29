@@ -1,0 +1,53 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="yGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="30%" stop-color="#FFD500"/>
+      <stop offset="60%" stop-color="#20D64A"/>
+      <stop offset="100%" stop-color="#8A2BE2"/>
+    </linearGradient>
+
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="white" stop-opacity="0"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12"
+                    flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Y -->
+  <path
+    d="M105 85
+       L190 85
+       L250 190
+       L310 85
+       L395 85
+       L290 265
+       L290 415
+       L210 415
+       L210 265
+       Z"
+    fill="url(#yGradient)"
+    filter="url(#shadow)"
+  />
+
+  <!-- Gloss -->
+  <path
+    d="M105 85
+       L190 85
+       L250 190
+       L310 85
+       L395 85
+       L370 125
+       L310 125
+       L250 225
+       L190 125
+       L130 125
+       Z"
+    fill="url(#shine)"
+  />
+</svg>
