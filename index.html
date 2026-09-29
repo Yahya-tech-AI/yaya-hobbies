@@ -92,8 +92,39 @@
 
             z-index: 9999;
 
-            animation:
-                splashFade 1s ease 3s forwards;
+            opacity: 1;
+
+            visibility: visible;
+
+            transition:
+                opacity 0.8s ease,
+                visibility 0.8s ease;
+        }
+
+
+        #splash.hide {
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           SPLASH CONTENT
+        ===================================================== */
+
+        .splash-content {
+            width: min(90vw, 420px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
         }
 
 
@@ -113,6 +144,8 @@
             justify-content: center;
 
             align-items: center;
+
+            margin-bottom: 10px;
         }
 
 
@@ -291,25 +324,117 @@
 
 
         /* =====================================================
-           SPLASH FADE
+           LOADING TEXT
         ===================================================== */
 
-        @keyframes splashFade {
+        .loading-text {
+            color: white;
 
-            0% {
-                opacity: 1;
+            font-family:
+                "Franklin Gothic Medium",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
 
-                visibility: visible;
-            }
+            font-size: 22px;
 
-            100% {
-                opacity: 0;
+            margin-bottom: 12px;
 
-                visibility: hidden;
+            letter-spacing: 2px;
+        }
 
-                pointer-events: none;
-            }
 
+        /* =====================================================
+           LOADING BAR
+        ===================================================== */
+
+        .loading-bar {
+            width: 100%;
+
+            height: 14px;
+
+            background:
+                rgba(255, 255, 255, 0.2);
+
+            border-radius: 50px;
+
+            overflow: hidden;
+
+            border:
+                2px solid
+                rgba(255, 255, 255, 0.35);
+
+            box-shadow:
+                0 0 15px
+                rgba(255, 255, 255, 0.15);
+        }
+
+
+        /* =====================================================
+           LOADING PROGRESS
+        ===================================================== */
+
+        #loadingProgress {
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0066ff,
+                    #8a2be2,
+                    #20d64a,
+                    #ffd500
+                );
+
+            box-shadow:
+                0 0 10px #0066ff,
+                0 0 20px #8a2be2;
+
+            transition:
+                width 0.08s linear;
+        }
+
+
+        /* =====================================================
+           LOADING PERCENTAGE
+        ===================================================== */
+
+        #loadingPercent {
+            color: white;
+
+            font-family:
+                "Franklin Gothic Medium",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
+
+            font-size: 18px;
+
+            margin-top: 12px;
+        }
+
+
+        /* =====================================================
+           LOADING STATUS
+        ===================================================== */
+
+        #loadingStatus {
+            color:
+                rgba(255, 255, 255, 0.8);
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 14px;
+
+            margin-top: 10px;
+
+            min-height: 20px;
         }
 
 
@@ -665,6 +790,11 @@
             }
 
 
+            .splash-content {
+                width: 85vw;
+            }
+
+
             .orbit-system {
                 width: 230px;
 
@@ -687,6 +817,11 @@
                 width: 125px;
 
                 height: 125px;
+            }
+
+
+            .loading-text {
+                font-size: 19px;
             }
 
 
@@ -776,27 +911,65 @@
 
     <div id="splash">
 
-        <div class="orbit-system">
+        <div class="splash-content">
 
-            <div class="orbit orbit-one">
 
-                <div class="orbit-circle"></div>
+            <!-- Logo + Orbit -->
+
+            <div class="orbit-system">
+
+                <div class="orbit orbit-one">
+
+                    <div class="orbit-circle"></div>
+
+                </div>
+
+
+                <div class="orbit orbit-two">
+
+                    <div class="orbit-circle"></div>
+
+                </div>
+
+
+                <img
+                    src="yaya-logo.svg"
+                    alt="Yaya Logo"
+                    class="splash-logo"
+                >
 
             </div>
 
 
-            <div class="orbit orbit-two">
+            <!-- Loading Text -->
 
-                <div class="orbit-circle"></div>
+            <div class="loading-text">
+                LOADING YAYA...
+            </div>
+
+
+            <!-- Loading Bar -->
+
+            <div class="loading-bar">
+
+                <div id="loadingProgress"></div>
 
             </div>
 
 
-            <img
-                src="yaya-logo.svg"
-                alt="Yaya Logo"
-                class="splash-logo"
-            >
+            <!-- Percentage -->
+
+            <div id="loadingPercent">
+                0%
+            </div>
+
+
+            <!-- Status -->
+
+            <div id="loadingStatus">
+                Initializing...
+            </div>
+
 
         </div>
 
@@ -931,7 +1104,7 @@
 
 
         <p>
-            Built with HTML &amp; CSS by Yaya 💻
+            Built with HTML, CSS &amp; JavaScript by Yaya 💻
         </p>
 
 
@@ -949,11 +1122,133 @@
     <script>
 
         /* =====================================================
+           SPLASH LOADING SYSTEM
+        ===================================================== */
+
+        const splash =
+            document.getElementById("splash");
+
+        const loadingProgress =
+            document.getElementById(
+                "loadingProgress"
+            );
+
+        const loadingPercent =
+            document.getElementById(
+                "loadingPercent"
+            );
+
+        const loadingStatus =
+            document.getElementById(
+                "loadingStatus"
+            );
+
+
+        let progress = 0;
+
+
+        const loadingMessages = [
+            "Initializing...",
+            "Loading logo...",
+            "Preparing website...",
+            "Loading hobbies...",
+            "Starting animations...",
+            "Preparing interface...",
+            "Almost ready..."
+        ];
+
+
+        const loadingTimer =
+            setInterval(
+                () => {
+
+                    progress++;
+
+
+                    /* Update progress bar */
+
+                    loadingProgress.style.width =
+                        progress + "%";
+
+
+                    /* Update percentage */
+
+                    loadingPercent.textContent =
+                        progress + "%";
+
+
+                    /* Update status */
+
+                    const messageIndex =
+                        Math.min(
+                            Math.floor(
+                                progress / 15
+                            ),
+                            loadingMessages.length - 1
+                        );
+
+
+                    if (
+                        progress < 100
+                    ) {
+
+                        loadingStatus.textContent =
+                            loadingMessages[
+                                messageIndex
+                            ];
+
+                    }
+
+
+                    /* Finished */
+
+                    if (
+                        progress >= 100
+                    ) {
+
+                        clearInterval(
+                            loadingTimer
+                        );
+
+
+                        loadingProgress.style.width =
+                            "100%";
+
+
+                        loadingPercent.textContent =
+                            "100%";
+
+
+                        loadingStatus.textContent =
+                            "Ready! 🚀";
+
+
+                        setTimeout(
+                            () => {
+
+                                splash.classList.add(
+                                    "hide"
+                                );
+
+                            },
+                            600
+                        );
+
+                    }
+
+                },
+                30
+            );
+
+
+        /* =====================================================
            SCROLL REVEAL
         ===================================================== */
 
         const elements =
-            document.querySelectorAll(".reveal");
+            document.querySelectorAll(
+                ".reveal"
+            );
 
 
         const observer =
@@ -1035,6 +1330,7 @@
 
             glowX +=
                 (mouseX - glowX) * 0.15;
+
 
             glowY +=
                 (mouseY - glowY) * 0.15;
