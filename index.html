@@ -4,18 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Yaya Hobbies</title>
+
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
     <style>
+        /* =========================
+           Base
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: mediumslateblue;
             min-height: 100vh;
-            padding: 40px;
             margin: 0;
+            padding: 40px;
+            overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
+        /* =========================
+           Custom Scrollbar
+        ========================= */
+
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -32,6 +50,7 @@
                 #20d64a,
                 #8a2be2
             );
+
             border-radius: 20px;
             border: 2px solid mediumslateblue;
         }
@@ -46,21 +65,29 @@
             );
         }
 
-        /* Splash Screen */
+        /* =========================
+           Splash Screen
+        ========================= */
+
         #splash {
             position: fixed;
             inset: 0;
-            background: mediumslateblue;
+
+            background-color: mediumslateblue;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             z-index: 9999;
+
             animation: splashFade 1s ease 2s forwards;
         }
 
         #splash img {
             width: 180px;
             height: 180px;
+
             animation: logoPop 1s ease;
         }
 
@@ -77,16 +104,26 @@
         }
 
         @keyframes splashFade {
-            to {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            100% {
                 opacity: 0;
                 visibility: hidden;
+                pointer-events: none;
             }
         }
 
-        /* Scroll Reveal */
+        /* =========================
+           Scroll Reveal
+        ========================= */
+
         .reveal {
             opacity: 0;
             transform: translateY(70px);
+
             transition:
                 opacity 0.8s ease,
                 transform 0.8s ease;
@@ -97,135 +134,645 @@
             transform: translateY(0);
         }
 
-        /* Spacing */
+        /* =========================
+           Sections
+        ========================= */
+
         section {
-            margin-bottom: 300px;
+            min-height: 70vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            margin-bottom: 120px;
+        }
+
+        /* =========================
+           Content Cards
+        ========================= */
+
+        .card {
+            color: white;
+
+            background-color: sandybrown;
+
+            font-family:
+                "Franklin Gothic Medium",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.15);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        /* =========================
+           Main Heading
+        ========================= */
+
+        .main-title {
+            padding: 25px;
+
+            font-size: 35.92px;
+
+            text-align: center;
+        }
+
+        /* =========================
+           Hobby Heading
+        ========================= */
+
+        .hobby-title {
+            padding: 20px;
+
+            font-size: 30px;
+
+            text-align: center;
+        }
+
+        /* =========================
+           Paragraphs
+        ========================= */
+
+        .intro {
+            padding: 25px;
+
+            font-size: 25px;
+
+            text-align: center;
+        }
+
+        .description {
+            padding: 30px;
+
+            font-size: 25px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+        /* =========================
+           Hobby List
+        ========================= */
+
+        .hobby-list {
+            padding: 35px 55px;
+
+            font-size: 25px;
+
+            line-height: 2;
+        }
+
+        .hobby-list li {
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           Logo
+        ========================= */
+
+        .logo-container {
+            align-items: center;
+            text-align: center;
+        }
+
+        .main-logo {
+            width: 200px;
+            height: 200px;
+
+            display: block;
+
+            margin: 30px auto;
+
+            transition:
+                transform 0.5s ease,
+                filter 0.5s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.08) rotate(3deg);
+
+            filter:
+                drop-shadow(0 0 10px #0066ff)
+                drop-shadow(0 0 20px #8a2be2);
+        }
+
+        /* =========================
+           Footer
+        ========================= */
+
+        footer {
+            color: white;
+
+            background-color: sandybrown;
+
+            font-family:
+                "Franklin Gothic Medium",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            margin-top: 100px;
+            margin-bottom: 40px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        footer h2 {
+            margin-top: 0;
+
+            font-size: 30px;
+        }
+
+        footer p {
+            font-size: 20px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           Cursor Glow
+        ========================= */
+
+        #cursorGlow {
+            position: fixed;
+
+            width: 25px;
+            height: 25px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.45);
+
+            box-shadow:
+                0 0 10px white,
+                0 0 25px #0066ff,
+                0 0 45px #8a2be2;
+
+            pointer-events: none;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 10000;
+
+            opacity: 0;
+
+            transition:
+                opacity 0.2s ease,
+                width 0.15s ease,
+                height 0.15s ease;
+        }
+
+        /* =========================
+           Click Ripple
+        ========================= */
+
+        .click-effect {
+            position: fixed;
+
+            width: 20px;
+            height: 20px;
+
+            border: 3px solid white;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 9998;
+
+            animation:
+                clickRipple 0.7s ease-out forwards;
+        }
+
+        @keyframes clickRipple {
+            0% {
+                width: 20px;
+                height: 20px;
+
+                opacity: 1;
+
+                box-shadow:
+                    0 0 10px #0066ff,
+                    0 0 20px #8a2be2;
+            }
+
+            100% {
+                width: 120px;
+                height: 120px;
+
+                opacity: 0;
+
+                box-shadow:
+                    0 0 30px #20d64a,
+                    0 0 60px #ffd500;
+            }
+        }
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 20px;
+            }
+
+            section {
+                min-height: 60vh;
+
+                margin-bottom: 80px;
+            }
+
+            .main-title {
+                font-size: 28px;
+            }
+
+            .hobby-title {
+                font-size: 25px;
+            }
+
+            .intro,
+            .description {
+                font-size: 20px;
+            }
+
+            .hobby-list {
+                padding: 25px 35px;
+
+                font-size: 20px;
+            }
+
+            .main-logo {
+                width: 160px;
+                height: 160px;
+            }
+
+            footer {
+                padding: 25px;
+            }
+
+            footer h2 {
+                font-size: 25px;
+            }
+
+            footer p {
+                font-size: 17px;
+            }
+        }
+
+        /* =========================
+           Disable Cursor Effects
+           On Touch Devices
+        ========================= */
+
+        @media (hover: none) and (pointer: coarse) {
+
+            #cursorGlow {
+                display: none;
+            }
+
+            .click-effect {
+                display: none;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-    <!-- Splash Screen -->
+    <!-- =========================
+         Cursor Glow
+    ========================= -->
+
+    <div id="cursorGlow"></div>
+
+
+    <!-- =========================
+         Splash Screen
+    ========================= -->
+
     <div id="splash">
-        <img src="yaya-logo.svg" alt="Yaya Logo">
+
+        <img
+            src="yaya-logo.svg"
+            alt="Yaya Logo"
+        >
+
     </div>
 
-    <!-- Main Title -->
+
+    <!-- =========================
+         Main Title
+    ========================= -->
+
     <section>
+
         <h1
-            class="reveal"
-            style="
-                color: white;
-                background-color: sandybrown;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                border-radius: 25px;
-                font-size: 35.92px;
-                padding: 20px;
-            ">
+            class="reveal card main-title"
+        >
             This is my website that I built myself
         </h1>
+
     </section>
 
-    <!-- Hobbies -->
+
+    <!-- =========================
+         Hobbies
+    ========================= -->
+
     <section>
+
         <h2
-            class="reveal"
-            style="
-                color: white;
-                background-color: sandybrown;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                border-radius: 20px;
-                font-size: 30px;
-                padding: 15px;
-            ">
+            class="reveal card hobby-title"
+        >
             🎯 My Hobbies
         </h2>
+
     </section>
 
-    <!-- Introduction -->
+
+    <!-- =========================
+         Introduction
+    ========================= -->
+
     <section>
+
         <p
-            class="reveal"
-            style="
-                color: white;
-                background-color: sandybrown;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                border-radius: 20px;
-                font-size: 25px;
-                padding: 20px;
-            ">
+            class="reveal card intro"
+        >
             My main hobbies are:
         </p>
+
     </section>
 
-    <!-- Hobby List -->
+
+    <!-- =========================
+         Hobby List
+    ========================= -->
+
     <section>
+
         <ul
-            class="reveal"
-            style="
-                color: white;
-                background-color: sandybrown;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                border-radius: 20px;
-                font-size: 25px;
-                padding: 30px 50px;
-            ">
+            class="reveal card hobby-list"
+        >
             <li>💻 Coding</li>
+
             <li>⚽ Playing Football</li>
+
             <li>🎮 Gaming</li>
+
             <li>🌐 Building Websites</li>
+
             <li>🚀 Learning Technology</li>
         </ul>
+
     </section>
 
-    <!-- Description -->
+
+    <!-- =========================
+         Description
+    ========================= -->
+
     <section>
+
         <p
-            class="reveal"
-            style="
-                color: white;
-                background-color: sandybrown;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                border-radius: 20px;
-                font-size: 25px;
-                padding: 20px;
-            ">
-            I enjoy coding because I can create websites, applications, and different projects.
-            I also enjoy playing football because it is fun, active, and competitive.
+            class="reveal card description"
+        >
+            I enjoy coding because I can create websites,
+            applications, and different projects.
+            I also enjoy playing football because it is fun,
+            active, and competitive.
         </p>
+
     </section>
 
-    <!-- Logo -->
-    <section>
+
+    <!-- =========================
+         Logo
+    ========================= -->
+
+    <section class="logo-container">
+
         <img
-            class="reveal"
+            class="reveal main-logo"
             src="yaya-logo.svg"
             alt="The logo I made"
-            style="
-                width: 180px;
-                height: 180px;
-                display: block;
-                margin: 30px auto;
-            ">
+        >
+
     </section>
 
-    <script>
-        const elements = document.querySelectorAll(".reveal");
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
+    <!-- =========================
+         Footer
+    ========================= -->
+
+    <footer class="reveal">
+
+        <h2>
+            🚀 Yaya Hobbies
+        </h2>
+
+        <p>
+            Thanks for visiting my website!
+        </p>
+
+        <p>
+            Built with HTML &amp; CSS by Yaya 💻
+        </p>
+
+        <p>
+            © 2026 Yaya Hobbies. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           Scroll Reveal
+        ========================= */
+
+        const elements =
+            document.querySelectorAll(".reveal");
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
                 }
-            });
-        }, {
-            threshold: 0.15
-        });
+            );
+
 
         elements.forEach((element) => {
+
             observer.observe(element);
+
         });
+
+
+        /* =========================
+           Cursor Glow
+        ========================= */
+
+        const cursorGlow =
+            document.getElementById("cursorGlow");
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let glowX = 0;
+        let glowY = 0;
+
+
+        document.addEventListener(
+            "mousemove",
+            (event) => {
+
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+
+                cursorGlow.style.opacity = "1";
+
+            }
+        );
+
+
+        function animateCursor() {
+
+            glowX +=
+                (mouseX - glowX) * 0.15;
+
+            glowY +=
+                (mouseY - glowY) * 0.15;
+
+
+            cursorGlow.style.left =
+                glowX + "px";
+
+            cursorGlow.style.top =
+                glowY + "px";
+
+
+            requestAnimationFrame(
+                animateCursor
+            );
+
+        }
+
+
+        animateCursor();
+
+
+        /* =========================
+           Hide Cursor Outside Page
+        ========================= */
+
+        document.addEventListener(
+            "mouseleave",
+            () => {
+
+                cursorGlow.style.opacity = "0";
+
+            }
+        );
+
+
+        document.addEventListener(
+            "mouseenter",
+            () => {
+
+                cursorGlow.style.opacity = "1";
+
+            }
+        );
+
+
+        /* =========================
+           Click Ripple
+        ========================= */
+
+        document.addEventListener(
+            "click",
+            (event) => {
+
+                const ripple =
+                    document.createElement("div");
+
+
+                ripple.classList.add(
+                    "click-effect"
+                );
+
+
+                ripple.style.left =
+                    event.clientX + "px";
+
+                ripple.style.top =
+                    event.clientY + "px";
+
+
+                document.body.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        ripple.remove();
+
+                    },
+                    700
+                );
+
+            }
+        );
+
     </script>
 
 </body>
